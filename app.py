@@ -1,11 +1,17 @@
 from newspaper import Article
-
+from flask import Flask
+from flask import request
 import newspaper
 
+app = Flask(__name__)
 
-def GetArticleText(event, context):
+@app.route('/')
+def index():
+    return "Hello, World!"
 
-    url = event['text']
+@app.route('/DeepCheck/api/v1.0/GetArticleText', methods=['GET'])
+def GetArticleText():
+    url = request.args.get('url')
 
     if url.startswith(('http', 'www.')):
         url = url
@@ -26,7 +32,7 @@ def Test():
         print(article.text)
 
 if __name__ == '__main__':
-    Test()
+    app.run(debug=True)
     
 
     
