@@ -1,6 +1,8 @@
 from newspaper import Article
 from flask import Flask
 from flask import request
+from flask import jsonify
+import prediction
 import newspaper
 
 app = Flask(__name__)
@@ -17,10 +19,23 @@ def GetArticleText():
         url = url
         article = Article(url)
         article.download()
-        article.parse()       
+        article.parse()  
+        p = prediction.predict(article.text)    
+        return jsonify(
+        text=article.text,
+        min=str(p[0][0]),
+        max=str(p[0][1])
+        )
+ 
+
+    p = prediction.predict(url)    
+    return jsonify(
+        text=url,
+        min=str(p[0][0]),
+        max=str(p[0][1])
+        )
     # text weiter verarbeiten
-        return article.text
-    return url
+       
 
 def Test():
     url = 'https://nbpostgazette.com/florida-woman-dies-of-flesh-eating-bacteria-while-after-stumbling-on-beach/'
@@ -32,8 +47,8 @@ def Test():
         print(article.text)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int("5000"), debug=True)
-    
+    app.run(port=int("5000"), debug=True)
+    #host='0.0.0.0', 
     
 
     

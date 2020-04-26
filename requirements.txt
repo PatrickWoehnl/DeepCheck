@@ -12,3 +12,7 @@ PyYAML>=3.11
 requests>=2.10.0
 tinysegmenter==0.3  # TODO(codelucas): Investigate making this >=0.3
 tldextract>=2.0.1
+numpy>=1.5.1
+pandas>=0.19.0
+scikit-learn>=0.18
+joblib>=0.14.1
