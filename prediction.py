@@ -19,7 +19,7 @@ def predict(text):
     result = tfidf.fit_transform(dfText)
     x_text = tfidf.transform([text])
 
-    prediction = model.predict(x_text)
+    prediction = model.predict_proba(x_text)
 
     print(prediction)
     return prediction
