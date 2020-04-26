@@ -2,7 +2,7 @@ from newspaper import Article
 from flask import Flask
 from flask import request
 from flask import jsonify
-from flask import CORS
+from flask_cors import CORS
 import prediction
 import newspaper
 
