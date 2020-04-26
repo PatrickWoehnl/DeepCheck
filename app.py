@@ -32,7 +32,7 @@ def Test():
         print(article.text)
 
 if __name__ == '__main__':
-    app.run(host='18.196.201.84', port=int("80"), debug=True)
+    app.run(host='0.0.0.0', port=int("5000"), debug=True)
     
     
 
