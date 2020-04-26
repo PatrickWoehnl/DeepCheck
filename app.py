@@ -7,7 +7,7 @@ import prediction
 import newspaper
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources=r'/*')
 
 @app.route('/')
 def index():
