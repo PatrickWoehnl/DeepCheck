@@ -2,10 +2,12 @@ from newspaper import Article
 from flask import Flask
 from flask import request
 from flask import jsonify
+from flask import CORS
 import prediction
 import newspaper
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -19,23 +21,23 @@ def GetArticleText():
         url = url
         article = Article(url)
         article.download()
-        article.parse()  
-        p = prediction.predict(article.text)    
+        article.parse()
+        p = prediction.predict(article.text)
         return jsonify(
         text=article.text,
         real=str(p[0][0]),
         fake=str(p[0][1])
         )
- 
 
-    p = prediction.predict(url)    
+
+    p = prediction.predict(url)
     return jsonify(
         text=url,
         real=str(p[0][0]),
         fake=str(p[0][1])
         )
     # text weiter verarbeiten
-       
+
 
 def Test():
     url = 'https://nbpostgazette.com/florida-woman-dies-of-flesh-eating-bacteria-while-after-stumbling-on-beach/'
@@ -43,11 +45,8 @@ def Test():
         url = url
         article = Article(url)
         article.download()
-        article.parse() 
+        article.parse()
         print(article.text)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=int("5000"), debug=True)
-    
-
-    
