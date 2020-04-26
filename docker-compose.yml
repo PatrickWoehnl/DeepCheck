@@ -1,0 +1,10 @@
+version: '2'
+services:
+  deepCheck:
+    restart: always 
+    image: deep_check
+    build: ./
+    volumes:
+     - ./:/var/www/app/
+    ports:
+      - 5000:5000
