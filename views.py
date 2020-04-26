@@ -3,7 +3,7 @@ from flask import Flask
 from flask import request
 import newspaper
 
-app = Flask(__name__)
+from app import app
 
 @app.route('/')
 def index():
