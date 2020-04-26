@@ -23,16 +23,16 @@ def GetArticleText():
         p = prediction.predict(article.text)    
         return jsonify(
         text=article.text,
-        min=str(p[0][0]),
-        max=str(p[0][1])
+        real=str(p[0][0]),
+        fake=str(p[0][1])
         )
  
 
     p = prediction.predict(url)    
     return jsonify(
         text=url,
-        min=str(p[0][0]),
-        max=str(p[0][1])
+        real=str(p[0][0]),
+        fake=str(p[0][1])
         )
     # text weiter verarbeiten
        
