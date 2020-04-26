@@ -3,7 +3,7 @@ from flask import Flask
 from flask import request
 import newspaper
 
-from app import app
+app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -32,7 +32,8 @@ def Test():
         print(article.text)
 
 if __name__ == '__main__':
-    app.run(host='172.31.43.44', port=int("80"), debug=True)
+    app.run(host='18.196.201.84', port=int("80"), debug=True)
+    
     
 
     
