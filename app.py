@@ -47,8 +47,7 @@ def Test():
         print(article.text)
 
 if __name__ == '__main__':
-    app.run(port=int("5000"), debug=True)
-    #host='0.0.0.0', 
+    app.run(host='0.0.0.0',port=int("5000"), debug=True)
     
 
     
