@@ -9,11 +9,11 @@ sample_text = "Latest industry research report on the Photography Studio Softwar
 
 def predict(text):
 
-    filename_model = './nb_model.joblib.pkl'
-    filename_tfidf = './tfidf.joblib.pkl'
+    filename_model = '/var/www/app/nb_model.joblib.pkl'
+    filename_tfidf = '/var/www/app/tfidf.joblib.pkl'
     model = joblib.load(filename_model)
     tfidf = joblib.load(filename_tfidf)
-    df = pd.read_pickle('./cleaned_df.pkl')
+    df = pd.read_pickle('/var/www/app/cleaned_df.pkl')
     dfText = df['clean_text'].values
 
     result = tfidf.fit_transform(dfText)
